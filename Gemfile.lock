@@ -6,6 +6,7 @@ PATH
 GEM
   specs:
     diff-lcs (1.1.2)
+    json (1.4.6)
     mocha (0.9.10)
       rake
     nokogiri (1.4.4)
@@ -27,6 +28,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (>= 1.0.0)
   flowplayer!
+  json
   mocha
   nokogiri
   rspec (~> 2.0.0)
