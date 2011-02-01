@@ -4,7 +4,7 @@
 
 ##Usage
 
-    <a id='my_video' style='display:block;width:512px;height312px;'>
+    <a id='video' style='display:block;width:512px;height312px;'>
     
   For JQuery
     = flowplayer_for :video, '/flowplayer.swf', 'jquery' do |player|
