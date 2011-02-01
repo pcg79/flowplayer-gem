@@ -1,9 +1,9 @@
 require 'json'
 module Flowplayer
   class Player
-    attr_accessor :options, :functions, :dom_id
-    def initialize(dom_id, &block)
-      @dom_id = dom_id
+    attr_accessor :options, :functions, :dom_id, :swf
+    def initialize(dom_id, swf, &block)
+      @dom_id, @swf = dom_id, swf
       @options = {}
       @functions = {}
       block.call(self)
@@ -20,7 +20,7 @@ module Flowplayer
       <<-EOS
         <script type='text/javascript'>
           //<![CDATA[
-            flowplayer("#{dom_id}", #{to_js})
+            flowplayer("#{dom_id}", "#{swf}", #{to_js});
           //]]>
         </script>
       EOS

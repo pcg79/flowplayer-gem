@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Flowplayer::Player do
   it "should set options from block" do
-    flow_player = Flowplayer::Player.new('my_video') do |player|
+    flow_player = Flowplayer::Player.new('my_video', 'commericial.swf') do |player|
       player.fullscreen true
       player.logo(:url => nil, :opacity => 0, :fullscreenOnly => true)
       player.onLoad do
@@ -17,14 +17,14 @@ describe Flowplayer::Player do
   end
   
   it "should set the dom_id to 'my_video'" do
-    flow_player = Flowplayer::Player.new('my_video') do |player|
+    flow_player = Flowplayer::Player.new('my_video', 'commericial.swf') do |player|
       player.fullscreen true
     end    
     flow_player.dom_id.should == 'my_video'
   end
   
   it "should generate valid options" do
-    flow_player = Flowplayer::Player.new('my_video') do |player|
+    flow_player = Flowplayer::Player.new('my_video', 'commericial.swf') do |player|
       player.fullscreen true
       player.logo({:opacity => 0, :fullscreenOnly => true})
       player.onLoad do
@@ -37,21 +37,22 @@ describe Flowplayer::Player do
   end
   
   it "should create script tags with options" do
-    flow_player = Flowplayer::Player.new('my_video') do |player|
+    flow_player = Flowplayer::Player.new('my_video', 'commericial.swf') do |player|
       player.fullscreen true
       player.logo(:url => nil, :opacity => 0, :fullscreenOnly => true)
       player.onLoad do
         'this.unmute();'
       end
     end
-    ["<script", "</script>", "flowplayer(\"my_video\", #{flow_player.to_js}"].each do |part|
+    ["<script", "</script>", "flowplayer(\"my_video\", \"commericial.swf\", #{flow_player.to_js}"].each do |part|
       flow_player.script_tags.should include part
     end
+    flow_player.script_tags.should match(/\)\;/)
   end
   
   it "should raise exception if passed a setter" do
     lambda do
-      flow_player = Flowplayer::Player.new('my_video') do |player|
+      flow_player = Flowplayer::Player.new('my_video', 'commericial.swf') do |player|
         player.fullscreen = true
       end
     end.should raise_error 
