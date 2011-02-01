@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    flowplayer (0.0.1)
+    flowplayer (0.0.2)
+      json
 
 GEM
   specs:
@@ -28,7 +29,6 @@ PLATFORMS
 DEPENDENCIES
   bundler (>= 1.0.0)
   flowplayer!
-  json
   mocha
   nokogiri
   rspec (~> 2.0.0)
