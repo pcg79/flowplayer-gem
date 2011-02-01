@@ -2,7 +2,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
 
   s.name = %q{flowplayer}
-  s.version = '0.0.1'
+  s.version = '0.0.2'
   s.platform    = Gem::Platform::RUBY
 
   s.authors = ["Scott Davis"]
@@ -23,6 +23,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec", "~> 2.0.0"
   s.add_development_dependency "nokogiri"
   s.add_development_dependency "mocha"
-  s.add_development_dependency "json"
+  s.add_dependency "json"
 
 end
