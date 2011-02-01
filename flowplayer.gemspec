@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
 
   s.authors = ["Scott Davis"]
-  s.description = %q{Flowplayer Helpers}
-  s.summary = %q{Flowplayer helper written in ruby}
+  s.description = %q{Flowplayer helper for Rails 3}
+  s.summary = %q{Flowplayer helper for Rails 3}
   s.email = %q{jetviper21@gmail.com}
 
   s.date = Date.today.to_s
@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.executables  = `git ls-files`.split("\n").map{|f| f =~ /^bin\/(.*)/ ? $1 : nil}.compact
   s.require_path = 'lib'
 
-  s.homepage = %q{http://github.com/jetviper21}
+  s.homepage = %q{https://github.com/jetviper21/flowplayer-gem}
   s.rdoc_options = ["--charset=UTF-8"]
   s.required_rubygems_version = ">= 1.3.6"
   
