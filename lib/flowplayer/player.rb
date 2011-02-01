@@ -2,8 +2,8 @@ require 'json'
 module Flowplayer
   class Player
     attr_accessor :options, :functions, :dom_id, :swf
-    def initialize(dom_id, swf, &block)
-      @dom_id, @swf = dom_id, swf
+    def initialize(dom_id, swf, lib='jquery', &block)
+      @dom_id, @swf, @lib = dom_id, swf, lib
       @options = {}
       @functions = {}
       block.call(self)
@@ -17,12 +17,38 @@ module Flowplayer
     end
     
     def script_tags
+      final = library("flowplayer(\"#{dom_id}\", \"#{swf}\", #{to_js});")
       <<-EOS
         <script type='text/javascript'>
           //<![CDATA[
-            flowplayer("#{dom_id}", "#{swf}", #{to_js});
+              #{final}
           //]]>
         </script>
+      EOS
+    end
+    
+    def library(func)
+      case @lib
+        when 'jquery'
+          jquery(func)
+        when 'prototype'
+          prototype(func)
+      end
+    end
+    
+    def jquery(func)
+      <<-EOS
+      $(document).ready(function() {
+        #{func}
+      });
+      EOS
+    end
+    
+    def prototype(func)
+      <<-EOS
+        document.observe("dom:loaded", function() {
+          #{func}
+        });
       EOS
     end
     
@@ -34,11 +60,7 @@ module Flowplayer
     
     def options_to_javascript
       options.map do |option, value| 
-        if value.is_a?(String)
-          "\"#{option}\":\"#{value.to_json}\""
-        else
-          "\"#{option}\":#{value.to_json}"
-        end
+        "\"#{option}\":#{value.to_json}"
       end
     end
     

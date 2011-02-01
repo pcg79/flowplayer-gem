@@ -6,7 +6,7 @@ module Flowplayer
       argument :install_type, :type => :string, :banner => "commercial", :required => false, :default => ''
       
       def install_flowplayer
-        copy_file 'flowplayer-3.2.4.min.js', Rails.root.join('public', 'javascript', 'flowplayer.min.js')
+        copy_file 'flowplayer-3.2.4.min.js', Rails.root.join('public', 'javascripts', 'flowplayer.min.js')
       end
       
       def install_swfs
