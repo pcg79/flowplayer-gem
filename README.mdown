@@ -2,7 +2,7 @@
 
 1. `gem 'flowplayer'` in your gem file
 2. ` rails g flowplayer` or `rails g flowplayer commercial`
-3. add `javascript_include_tag 'flowplayer.min.js'` to you application layout
+3. add `javascript_include_tag 'flowplayer.min.js'` to your application layout
 4. read below
 
 ##Usage
