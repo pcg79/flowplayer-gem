@@ -52,6 +52,25 @@ module Flowplayer
       EOS
     end
     
+    def only_play_button!(opts = {})
+      options[:plugins] ||= {}
+      options[:plugins][:controls] ||= {}
+      hash = {
+          :mute => false,
+          :slowForward => false,
+          :time => false,
+          :slowBackwards => false,
+          :volume => false,
+          :scrubber => false,
+          :stop => false,
+          :fullscreen => false,
+          :play => true
+      }
+      hash.merge!(opts)
+      options[:plugins][:controls].merge!(hash)
+    end
+    
+    
     private
     
     def functions_to_javascript
