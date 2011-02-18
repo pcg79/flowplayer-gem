@@ -1,13 +1,13 @@
 PATH
   remote: .
   specs:
-    flowplayer (0.0.3)
+    flowplayer (0.0.4)
       json
 
 GEM
   specs:
     diff-lcs (1.1.2)
-    json (1.4.6)
+    json (1.5.1)
     mocha (0.9.10)
       rake
     nokogiri (1.4.4)
